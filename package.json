@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/C0DE-RUNNER/Starwars/issues"
   },
-  "homepage": "https://github.com/C0DE-RUNNER/Starwars#readme"
+  "homepage": "https://github.com/C0DE-RUNNER/Starwars#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
