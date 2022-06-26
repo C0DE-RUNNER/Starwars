@@ -6,5 +6,5 @@ app.listen(3000, function(){
 })
 
 app.get('/', (req, res) => {
-    res.sendFile();
+    res.sendFile('C:/Users/thaku/Desktop/100-Devs/Projects/StarWars/index.html');
 })
