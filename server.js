@@ -1,7 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const MongoClint = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb+srv://starwars:starwars%40123@cluster0.idlrdxn.mongodb.net/?retryWrites=true&w=majority')
+.then(client => {
+    console.log('Connected to Database');
+    const db = client.db('starwars-quotes');
+  })
+.catch(console.error);
 
 
 app.listen(3000, function(){
