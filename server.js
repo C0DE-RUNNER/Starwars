@@ -12,7 +12,7 @@ MongoClient.connect('mongodb+srv://starwars:starwars%40123@cluster0.idlrdxn.mong
     const quoteCollection = db.collection('quotes');
     
     app.use(bodyParser.urlencoded({ extended: true }))
-    
+
     app.get('/', (req, res) => {
         db.collection('quotes').find().toArray()
     .then(results => {
@@ -23,6 +23,7 @@ MongoClient.connect('mongodb+srv://starwars:starwars%40123@cluster0.idlrdxn.mong
    
 })
     
+
     app.post('/quotes', (req,res) => {
         quoteCollection.insertOne(req.body)
         .then(result => {
