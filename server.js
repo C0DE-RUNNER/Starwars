@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
+app.set('view engine', 'ejs');
+
 
 MongoClient.connect('mongodb+srv://starwars:starwars%40123@cluster0.idlrdxn.mongodb.net/?retryWrites=true&w=majority')
 .then(client => {
@@ -15,10 +17,11 @@ MongoClient.connect('mongodb+srv://starwars:starwars%40123@cluster0.idlrdxn.mong
         db.collection('quotes').find().toArray()
     .then(results => {
       console.log(results)
+      res.render('index.ejs', { quotes: results })
     })
     .catch(error => console.error(error))
-        res.sendFile('C:/Users/thaku/Desktop/100-Devs/Projects/StarWars/index.html');
-    })
+   
+})
     
     app.post('/quotes', (req,res) => {
         quoteCollection.insertOne(req.body)
