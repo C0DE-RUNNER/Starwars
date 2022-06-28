@@ -1,5 +1,3 @@
-app.use(express.static('public'))
-
 
 const update = document.querySelector('#update-button')
 
@@ -12,41 +10,30 @@ update.addEventListener('click', _ => {
         quote: 'I find your lack of faith disturbing.'
       })
     })
+    .then(res => {
+      if (res.ok) return res.json()
+    })
+    .then(response => {
+      console.log(response)
+      window.location.reload(true)
+    })
+    .catch(err => console.log(err));
   })
 
-  app.use(bodyParser.json());
+  const deleteButton = document.querySelector('#delete-button')
 
-  app.put('/quotes', (req, res) => {
-    console.log(req.body)
-  })
-
-  quotesCollection.findOneAndUpdate(
-    { name: 'Yoda' },
-    {
-      $set: {
-        name: req.body.name,
-        quote: req.body.quote
-      }
-    },
-    {
-      upsert: true
-    }
-  )
-    .then(result => {/* ... */})
-    .catch(error => console.error(error))
-
-    app.put('/quotes', (req, res) => {
-        quotesCollection.findOneAndUpdate(/* ... */)
-          .then(result => {
-             res.json('Success')
-           })
-          .catch(error => console.error(error))
+  deleteButton.addEventListener('click', _ => {
+    fetch('/quotes', {
+      method: 'delete',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Darth Vadar'
       })
-
-      fetch({ /* request */ })
-  .then(res => {
-    if (res.ok) return res.json()
-  })
-  .then(response => {
-    console.log(response)
+    })
+      .then(res => {
+        if (res.ok) return res.json()
+      })
+      .then(data => {
+        window.location.reload()
+      })
   })
