@@ -9,7 +9,7 @@ const MongoClient = require('mongodb').MongoClient;
 app.set('view engine', 'ejs');
 
 
-MongoClient.connect('mongodb+srv://starwars:starwars%40123@cluster0.idlrdxn.mongodb.net/?retryWrites=true&w=majority')
+MongoClient.connect(STRING)
 .then(client => {
     console.log('Connected to Database');
     const db = client.db('starwars-quotes');
